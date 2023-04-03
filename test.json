@@ -1,40 +1,34 @@
-{    
+ {    
     "keywords": {
-        "strength": [2,3],
+        "strength": 1,
         "projectile": "n",
         "element": [
-            "Ce", "Dy"
-        ],
-        "massmodel": [2,3],
+            "Mg"]
+        ,
+        "massmodel": 2,
         "mass": {
-            "Ce": [194],
+            "Mg": [56,55],
             "Dy": [162]
         },
-        "astro": "y",
-        "energy": "energies.txt"
+        "energy": "energies.txt",
+        "popeps": "1.e-20",
+        "xseps": "1.e-20",
+        "transeps": "1.e-20",
+        "MaxN": 1,
+        "MaxZ" : 0,
+        "preequilibrium" : "n",
+        "astro":"n"
     },
     "script_keywords": {
         "energy_start": "0.0025E-03",
-        "N": 100,
+        "N": 2,
         "output_file": "output.txt",
         "energy_stop": "5000E-03",
         "input_file": "input.txt",
-        "result_files": [
-            "astrorate.g",
-            "astrorate.tot"
-        ]
-    },
-    "dependents": {
-        "comment": "The names, such as 'optical', are irrelevant",
-        "Optical":{"localomp":"n", "jlmomp":"y"}
-    },
-    "_scissors":{    
-        "Dy": {
-            "160": {
-                "gpr": 1,
-                "spr": 0.47368457989547197,
-                "epr": 2.3921663572847525
-                }
-        } 
+        "result_files": ["output.txt", "rp...{mass}"]
+        
     }
+
+    
 }
+

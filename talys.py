@@ -490,7 +490,7 @@ class Manager:
             outfile.write('\n\nEnergies: \n')
             energies = np.linspace(float(self.reader['energy_start']),
                                    float(self.reader['energy_stop']),
-                                   float(self.reader['N']))
+                                   int(self.reader['N']))
             # Outfile named energy_file
             outfile_energy = open(os.path.join(self.root_directory, self.reader['energy'][0]), 'w')
             # Write energies to energy_file and file in one column
@@ -651,7 +651,7 @@ class Manager:
         self.run_deeper(keywords, structure)
 
         # When the script has completed, log the total time
-        elapsed = time.strftime("%H:%M:%S", time.localtime(time.time() - start))
+        elapsed = time.strftime("%H:%M:%S", time.gmtime(time.time() - start))
         self.logger.info("Total elapsed time: %s", elapsed)
 
     def run_deeper(self, keywords, structure):
@@ -928,7 +928,8 @@ class Manager:
         # TALYS-calculations-date-time/result_files/element/isotope
         try:
             for filename in self.reader["result_files"]:
-                pattern = re.compile(filename)
+                pattern = re.compile(filename.format(mass = str(keywords['mass'] + 1).zfill(3)))
+            
                 files = [file for file in os.listdir(self.rest_directory) if re.match(pattern, file)]
                 if not files:
                     self.logger.error("Found no files matching %s", filename)
