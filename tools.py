@@ -166,6 +166,7 @@ def talys_version(local=False):
         talys_path = os.path.join(os.getcwd(), "talys")
     else:
         talys_path = which("talys")
+        print(talys_path)
     if talys_path is None or "talys" not in talys_path:
         raise RuntimeError("Could not find talys.")
 
